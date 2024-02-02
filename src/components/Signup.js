@@ -3,19 +3,23 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useUserAuth } from "../context/UserAuthContext";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase"; // Assuming you have a firebase.js file with Firestore initialization
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const { signUp } = useUserAuth();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
+      // Sign up user with email and password
       await signUp(email, password);
+
       navigate("/");
     } catch (err) {
       setError(err.message);
@@ -25,7 +29,7 @@ const Signup = () => {
   return (
     <>
       <div className="p-4 box">
-        <h2 className="mb-3">Firebase Auth Signup</h2>
+        <h2 className="mb-3">ChainTech Network Signup</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -43,7 +47,6 @@ const Signup = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
-
           <div className="d-grid gap-2">
             <Button variant="primary" type="Submit">
               Sign up

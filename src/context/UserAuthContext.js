@@ -23,6 +23,12 @@ export function UserAuthContextProvider({ children }) {
   function logOut() {
     return signOut(auth);
   }
+  // function updateEmail(email){
+  //   return updateEmail(auth.currentUser,email);
+  // }
+  // function updatePassword(password){
+  //   return updatePassword(auth.currentUser,password);
+  // }
   function googleSignIn() {
     const googleAuthProvider = new GoogleAuthProvider();
     return signInWithPopup(auth, googleAuthProvider);
