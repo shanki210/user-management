@@ -15,7 +15,7 @@ This is a simple User Management System built with React, Firebase Authenticatio
 1. Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/user-management-system.git
+git clone https://github.com/shanki210/user-management.git
 ```
 
 
